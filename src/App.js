@@ -1,4 +1,6 @@
 import React from "react"
+import Button from "./components/Button"
+import mock from "./mock"
 
 const buttonA = <button>Historico dos Clientes</button>
 const buttonB = <button>Ativar</button>
@@ -8,44 +10,17 @@ const buttonD = <button>Cadastrar</button>
 const hasCustomer = true
 const hasElement = false
 
-const listCustomer = [
-    {
-        id: 1,
-        name: 'Joao da Silva',
-        skills: ['HTML', 'CSS']
-    },
-    {
-        id: 2,
-        name: 'Maria da Silva',
-        skills: ['LOL', 'BF4']
-    },
-    {
-        id: 3,
-        name: 'Pepa da Silva',
-        skills: ['JAVA', 'JS', 'NODE']
-    },
-    {
-        id: 4,
-        name: 'Carlos da Silva',
-        skills: ['Bebe', 'come', 'anda']
-    },
-    {
-        id: 5,
-        name: 'Ana da Silva',
-        skills: ['le', 'escreve']
-    }
-]
-
 const App = () => {
 
-    const handleClick = (e) => {
+    const handleClick = (id) => {
         console.log('deletar cliente')
+        console.log(id)
     }
 
     const renderCustomers = (customer, index) => {
         return (
             <div key={`customer-${customer.id}`}>
-                <li >{customer.name} <button onClick={handleClick}>Deletar Cliente X</button></li>
+                <li>{customer.name} <Button onClick={() => handleClick(customer.id)}>Deletar o Cliente</Button></li>
                 {customer.skills.map(renderSkills)}
             </div>
         )
@@ -111,11 +86,12 @@ const App = () => {
                 <p>Bem vindos</p>
                 {hasCustomer ? renderShowCadastro : renderAddCadastro}
             </div>
-            {showCustomer()}
 
+            {showCustomer()}
+            
             <div>
                 <ul>
-                    {listCustomer.map(renderCustomers)}
+                    {mock.map(renderCustomers)}
                 </ul>
             </div>
         </div>
