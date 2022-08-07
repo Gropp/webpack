@@ -1,6 +1,6 @@
 import React from "react"
-import Button from "./components/Button"
-import mock from "./mock"
+import Button from "../components/Button"
+import mock from "../mock"
 
 const buttonA = <button>Historico dos Clientes</button>
 const buttonB = <button>Ativar</button>
